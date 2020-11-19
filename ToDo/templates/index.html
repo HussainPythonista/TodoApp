@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block dynamic %}
+    <div class="row">
+        <div class="column">
+            <h1>Add Items.....</h1> 
+            <form action="add_todo"  method="post" class="form-inline">
+                <input type="text" class="form-control mb-2 mr-sm-2" name='content' placeholder="Type Here">
+                <button type="submit" class="btn btn-primary mb-2">SUBMIT</button>
+            </form> 
+            
+        </div>
+        </div>
+        
+    <div class="row mt-4">
+        <div class="column">
+            <ul class="list-group">
+                
+                {% for todo in toDo  %}
+                    
+                    <li class="list-group-item">{{todo.text}}
+                        <div class="float-right">
+                            <form  action="delete_todo/{{todo.id}}" action="POST">
+                                <button type="submit"  class="btn btn-danger">delete</button>
+                            </form>    
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+{% endblock dynamic %}
+
+
+
